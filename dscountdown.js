@@ -21,7 +21,7 @@
 			minutes : 0,
 			hours : 0,
 			days : 0,
-			
+			validDate:false,
 			elemDays: null,
 			elemHours: null,
 			elemMinutes: null,
@@ -58,7 +58,11 @@
 		}
 		
 		ds.init = function(){
-			
+			ds.addClass('dsCountDown');
+                        if (!ds.data.validDate){
+                            ds.hide();
+                        }
+                          ds.attr('style','display:none;')
 			// Init element
 			if(! ds.options.elemSelSeconds){			
 				ds.prepend('<div class="ds-element ds-element-seconds">\
@@ -100,7 +104,7 @@
 				ds.data.elemDays = ds.find(ds.options.elemSelDays);
 			}
 			
-			ds.addClass('dsCountDown');
+			
 			ds.addClass('ds-' + ds.options.theme);
 			
 			// Init start and end
@@ -120,6 +124,7 @@
 			}
 			
 			ds.start();
+                        
 		}
 		
 		ds.stop = function(callback){
@@ -182,10 +187,16 @@
 							}else{
 								ds.stop(ds.options.onFinish);
 							}
+                                                        if (!ds.data.validDate){
+                                                            ds.data.validDate=true;
+                                                            ds.show();
+                                                        } 
 						},
 						ds.data.refreshed);
 					ds.data.running = true;
 				}else{
+                                    ds.data.seconds=0;
+                                    ds.data.elemMinutes.html("0");
 					if(ds.options.onFinish){
 						ds.options.onFinish(ds);
 					}
