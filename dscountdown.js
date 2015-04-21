@@ -158,7 +158,7 @@
 								
 								if(ds.data.seconds <= 0 && (ds.data.minutes > 0 || ds.data.hours > 0 || ds.data.days > 0)){	
 									ds.data.minutes --;
-									ds.data.seconds = 60;
+									ds.data.seconds = 59;
 								}
 								
 								if(ds.data.minutes <= 0 && (ds.data.hours > 0 || ds.data.days > 0)){
