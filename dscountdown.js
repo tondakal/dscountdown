@@ -221,7 +221,7 @@
                     ds.data.running = true;
                 } else {
                     ds.data.seconds = 0;
-                    ds.data.elemMinutes.html("0");
+                    ds.data.elemMinutes.html("00");
                     if (ds.options.onFinish) {
                         ds.options.onFinish(ds);
                     }
